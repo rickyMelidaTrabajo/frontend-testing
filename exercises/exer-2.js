@@ -13,20 +13,20 @@ const { createAll } = require('../helpers/data.helper');
 
 const companies = createAll();
 
-const usersWhitCars = (companies, hasCar)=>{
+
+const usersWhitCars = (companies, hasCar) => {
     let userWithCars = [];
-    companies.forEach(company => {
-        company.users.forEach(user=>{
-            if(user.car === hasCar) {
-                userWithCars.push(user);
-            }
-        })
+    companies.forEach((company, i) => {
+        userWithCars = company.users.filter(user => user.car === hasCar);
+        companies[i].users = userWithCars;
+        companies[i].usersLength = userWithCars.length;
+        userWithCars = [];
     });
 
-    return userWithCars;
+
 }
-//let user = usersWhitCars(companies, true);
 
+let user = usersWhitCars(companies, false);
 
-//cleanConsole(2, companies);
-//console.log('%c ---- RES 2 --- ', 'background: #bada55; color: #222', 'Put here your method: ');
+cleanConsole(2, companies);
+console.log('%c ---- RES 2 --- ', 'background: #bada55; color: #222', 'Put here your method: ');

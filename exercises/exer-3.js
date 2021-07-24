@@ -13,5 +13,7 @@ const { createAll } = require('../helpers/data.helper');
 
 const companies = createAll();
 
-cleanConsole(3, companies);
+console.log(companies)
+
+//cleanConsole(3, companies);
 console.log('%c ---- RES 3 --- ', 'background: #bada55; color: #222', 'Put here your method: ');
