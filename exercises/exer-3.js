@@ -16,4 +16,4 @@ const companies = createAll();
 console.log(companies)
 
 //cleanConsole(3, companies);
-console.log('%c ---- RES 3 --- ', 'background: #bada55; color: #222', 'Put here your method: ');
+//console.log('%c ---- RES 3 --- ', 'background: #bada55; color: #222', 'Put here your method: ');

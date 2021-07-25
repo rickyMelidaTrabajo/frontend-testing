@@ -22,11 +22,9 @@ const usersWhitCars = (companies, hasCar) => {
         companies[i].usersLength = userWithCars.length;
         userWithCars = [];
     });
-
-
 }
 
-let user = usersWhitCars(companies, false);
+usersWhitCars(companies, true);
 
-cleanConsole(2, companies);
-console.log('%c ---- RES 2 --- ', 'background: #bada55; color: #222', 'Put here your method: ');
+//cleanConsole(2, companies);
+//console.log('%c ---- RES 2 --- ', 'background: #bada55; color: #222', 'Put here your method: ');
