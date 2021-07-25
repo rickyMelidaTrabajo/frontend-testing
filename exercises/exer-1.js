@@ -61,5 +61,7 @@ const sortByName = (arr) => {
 }
 
 replacement(companies);
+
+module.exports = replacement;
 //cleanConsole(1, companies);
 //console.log('%c ---- RES 1 --- ', 'background: #bada55; color: #222', 'Put here your method: ');
