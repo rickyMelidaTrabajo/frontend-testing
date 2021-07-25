@@ -18,41 +18,23 @@ const { cleanConsole } = require('../helpers/system.helpers');
 const { createAll } = require('../helpers/data.helper');
 const companies = createAll();
 
-console.log(companies)
 
 const replacement = (companies) => {
     companies.forEach(company => {
         for (let value in company) {
-            if (value === 'name') {
-                changeUpperCaseFirstLetter(company[value])
-            }
+            if (value === 'name') company[value] = changeUpperCaseFirstLetter(company[value]);
         }
-
         company.users.forEach(users => {
             for (const value in users) {
                 if (users[value] === undefined) users[value] = '';
-                if (value == 'firstName' || value == 'lastName') {
-                    if (users[value] != undefined) {
-                        changeUpperCaseFirstLetter(users[value])
-                    }
-                }
+                if (value === 'firstName' || value === 'lastName')
+                    users[value] = changeUpperCaseFirstLetter(users[value]);
             }
         });
 
-        company.users.sort((a, b) => {
-            if (a.firstName > b.firstName) return 1;
-            if (a.firstName < b.firstName) return -1;
-
-            return 0;
-        })
+        sortByName(company.users);
     });
-
-    companies.sort((a, b) => {
-        if (a.usersLength < b.usersLength) return 1;
-        if (a.usersLength > b.usersLength) return -1;
-
-        return 0;
-    });
+    sortByNumber(companies);
 }
 
 const changeUpperCaseFirstLetter = (text) => {
@@ -60,7 +42,24 @@ const changeUpperCaseFirstLetter = (text) => {
     return firsLetter + text.slice(1);
 }
 
+const sortByNumber = (arr) => {
+    arr.sort((num1, num2) => {
+        if (num1.usersLength < num2.usersLength) return 1;
+        if (num1.usersLength > num2.usersLength) return -1;
 
-//replacement(companies);
+        return 0;
+    })
+}
+
+const sortByName = (arr) => {
+    arr.sort((name1, name2) => {
+        if (name1.firstName > name2.firstName) return 1;
+        if (name1.firstName < name2.firstName) return -1;
+
+        return 0;
+    })
+}
+
+replacement(companies);
 //cleanConsole(1, companies);
 //console.log('%c ---- RES 1 --- ', 'background: #bada55; color: #222', 'Put here your method: ');
