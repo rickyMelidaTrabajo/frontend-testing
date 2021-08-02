@@ -22,14 +22,13 @@ const userTable = (companies) => {
             users.push(usrs);
         })
     });
-
     const orderedUsers = users.sort((user1, user2) => user2.age - user1.age)
 
-    console.table(orderedUsers)
+    return orderedUsers;
 }
 
 
-//userTable(companies)
+module.exports = userTable
 
 cleanConsole(4, companies);
 console.log('%c ---- RES 4 --- ', 'background: #bada55; color: #222', 'Put here your method: ');
